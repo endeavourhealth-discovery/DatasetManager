@@ -1,6 +1,6 @@
-package org.endeavourhealth.skeleton.api.dal;
+package org.endeavourhealth.datasetmanager.api.dal;
 
-public class TemplateDAL_Mock implements TemplateDAL {
+public class DatasetManagerDAL_Mock implements DatasetManagerDAL {
     public boolean getGreetingCalled = false;
     @Override
     public String getGreeting() {

@@ -1,19 +1,19 @@
-package org.endeavourhealth.skeleton.api.logic;
+package org.endeavourhealth.datasetmanager.api.logic;
 
-import org.endeavourhealth.skeleton.api.dal.TemplateDAL_Mock;
+import org.endeavourhealth.datasetmanager.api.dal.DatasetManagerDAL_Mock;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class TemplateLogicTest {
-    private TemplateDAL_Mock dal;
-    private TemplateLogic instance;
+    private DatasetManagerDAL_Mock dal;
+    private DatasetManagerLogic instance;
 
     @Before
     public void setup() {
-        dal = new TemplateDAL_Mock();
-        instance =  new TemplateLogic(dal);
+        dal = new DatasetManagerDAL_Mock();
+        instance =  new DatasetManagerLogic(dal);
     }
 
     @Test

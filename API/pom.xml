@@ -6,8 +6,8 @@
 
     <parent>
         <relativePath>../pom.xml</relativePath>
-        <groupId>org.endeavourhealth.informationManager</groupId>
-        <artifactId>InformationManager</artifactId>
+        <groupId>org.endeavourhealth.datasetManager</groupId>
+        <artifactId>DatasetManager</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -17,7 +17,7 @@
 
     <properties>
         <!-- TODO change SkeletonAPIandUI to your repo name -->
-        <sonar.projectKey>endeavourhealth-discovery_SkeletonAPIandUI::API</sonar.projectKey>
+        <sonar.projectKey>endeavourhealth-discovery_datasetManager::API</sonar.projectKey>
         <sonar.exclusions>**/docs/**/*</sonar.exclusions>
     </properties>
 

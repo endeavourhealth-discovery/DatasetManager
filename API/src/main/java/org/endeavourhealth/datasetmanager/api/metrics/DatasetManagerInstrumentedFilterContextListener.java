@@ -1,12 +1,11 @@
-package org.endeavourhealth.skeleton.api.metrics;
-
+package org.endeavourhealth.datasetmanager.api.metrics;
 
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.SharedMetricRegistries;
 import com.codahale.metrics.servlet.InstrumentedFilterContextListener;
 
 // TODO: Metrics filter
-public class TemplateInstrumentedFilterContextListener extends InstrumentedFilterContextListener {
+public class DatasetManagerInstrumentedFilterContextListener extends InstrumentedFilterContextListener {
 
     public static final MetricRegistry REGISTRY = SharedMetricRegistries.getOrCreate("templateMetricRegistry");
 

@@ -8,12 +8,12 @@ import {Routes} from '@angular/router';
 export class AppMenuService implements  AbstractMenuProvider {
   static getRoutes(): Routes {
     return [
-      { path: '', redirectTo : 'skeleton', pathMatch: 'full' }, // Default route
-      {path: 'skeleton', component: SettingsComponent}
+      { path: '', redirectTo : 'datasetManager', pathMatch: 'full' }, // Default route
+      {path: 'datasetManager', component: SettingsComponent}
     ];
   }
   getApplicationTitle(): string {
-    return 'Skeleton tool';             // TODO: Tool title
+    return 'Dataset Manager tool';             // TODO: Tool title
   }
 
   getClientId(): string {
@@ -26,7 +26,7 @@ export class AppMenuService implements  AbstractMenuProvider {
 
   getMenuOptions(): MenuOption[] {
     return [
-      {caption: 'Skeleton module', state: 'skeleton', icon: 'fa fa-user', role: 'eds-user-manager:user-manager'},
+      {caption: 'Dataset Manager module', state: 'skeleton', icon: 'fa fa-user', role: 'eds-user-manager:user-manager'},
       {caption: 'Configuration', state: 'config', icon: 'fa fa-cogs', role: 'eds-user-manager:user-manager'},
       {caption: 'Delegation', state: 'config', icon: 'fa fa-group', role: 'eds-user-manager:user-manager'},
       {caption: 'Audit', state: 'config', icon: 'fa fa-list', role: 'eds-user-manager:user-manager'}

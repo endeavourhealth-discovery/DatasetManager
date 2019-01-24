@@ -1,4 +1,4 @@
-package org.endeavourhealth.skeleton.api.framework;
+package org.endeavourhealth.datasetmanager.api.framework;
 
 import com.codahale.metrics.jvm.*;
 import io.swagger.jaxrs.config.SwaggerContextService;
@@ -6,7 +6,7 @@ import io.swagger.models.Info;
 import io.swagger.models.Swagger;
 import io.swagger.models.auth.OAuth2Definition;
 import org.endeavourhealth.coreui.framework.config.ConfigService;
-import org.endeavourhealth.skeleton.api.metrics.TemplateInstrumentedFilterContextListener;
+import org.endeavourhealth.datasetmanager.api.metrics.DatasetManagerInstrumentedFilterContextListener;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,8 +17,8 @@ public class SwaggerBootstrap extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         Info info = new Info()
-                .title("Skeleteon API")                                       // TODO: Swagger title
-                .description("Documentation for the skeleton api ");          // TODO: Swagger description
+                .title("Dataset Manager API")                                       // TODO: Swagger title
+                .description("Documentation for the Dataset Manager api ");          // TODO: Swagger description
 
         System.out.println("API is running!!!");
 
@@ -33,10 +33,10 @@ public class SwaggerBootstrap extends HttpServlet {
                 );
         new SwaggerContextService().withServletConfig(config).updateSwagger(swagger);
 
-        TemplateInstrumentedFilterContextListener.REGISTRY.register("Garbage Collection", new GarbageCollectorMetricSet());
-        TemplateInstrumentedFilterContextListener.REGISTRY.register("Buffers", new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()));
-        TemplateInstrumentedFilterContextListener.REGISTRY.register("Memory", new MemoryUsageGaugeSet());
-        TemplateInstrumentedFilterContextListener.REGISTRY.register("Threads", new ThreadStatesGaugeSet());
-        TemplateInstrumentedFilterContextListener.REGISTRY.register("File Descriptor", new FileDescriptorRatioGauge());
+        DatasetManagerInstrumentedFilterContextListener.REGISTRY.register("Garbage Collection", new GarbageCollectorMetricSet());
+        DatasetManagerInstrumentedFilterContextListener.REGISTRY.register("Buffers", new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()));
+        DatasetManagerInstrumentedFilterContextListener.REGISTRY.register("Memory", new MemoryUsageGaugeSet());
+        DatasetManagerInstrumentedFilterContextListener.REGISTRY.register("Threads", new ThreadStatesGaugeSet());
+        DatasetManagerInstrumentedFilterContextListener.REGISTRY.register("File Descriptor", new FileDescriptorRatioGauge());
     }
 }
