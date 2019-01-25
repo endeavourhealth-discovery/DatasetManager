@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsComponent } from './settings.component';
+import { DatasetManagerComponent } from './dataset-manager.component';
 import {CommonModule} from '@angular/common';
 import {DialogsModule} from 'eds-angular4';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {By} from '@angular/platform-browser';
 
-describe('SettingsComponent', () => {
-  let component: SettingsComponent;
-  let fixture: ComponentFixture<SettingsComponent>;
+describe('DatasetManagerComponent', () => {
+  let component: DatasetManagerComponent;
+  let fixture: ComponentFixture<DatasetManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,13 +17,13 @@ describe('SettingsComponent', () => {
         DialogsModule,
         NgbModule.forRoot()
       ],
-      declarations: [ SettingsComponent ]
+      declarations: [ DatasetManagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsComponent);
+    fixture = TestBed.createComponent(DatasetManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

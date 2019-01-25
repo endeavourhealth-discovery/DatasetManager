@@ -9,7 +9,7 @@ import {Http, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
 import {LayoutComponent} from 'eds-angular4/dist/layout/layout.component';
 import {LayoutModule, AbstractMenuProvider, UserManagerNotificationService} from 'eds-angular4';
 import {AppMenuService} from './app-menu.service';
-import {SettingsModule} from './settings/settings.module';
+import {DatasetManagerModule} from './dataset-manager/dataset-manager.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {SettingsModule} from './settings/settings.module';
     BrowserModule,
     HttpModule,
     LayoutModule,
-    SettingsModule,
+    DatasetManagerModule,
     RouterModule.forRoot(AppMenuService.getRoutes(), {useHash: true}),
     NgbModule.forRoot(),
     ToastModule.forRoot()

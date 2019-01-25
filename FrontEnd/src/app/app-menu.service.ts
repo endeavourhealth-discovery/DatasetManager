@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AbstractMenuProvider} from 'eds-angular4';
 import {MenuOption} from 'eds-angular4/dist/layout/models/MenuOption';
-import {SettingsComponent} from './settings/settings/settings.component';
+import {DatasetManagerComponent} from './dataset-manager/dataset-manager/dataset-manager.component';
 import {Routes} from '@angular/router';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AppMenuService implements  AbstractMenuProvider {
   static getRoutes(): Routes {
     return [
       { path: '', redirectTo : 'datasetManager', pathMatch: 'full' }, // Default route
-      {path: 'datasetManager', component: SettingsComponent}
+      {path: 'datasetManager', component: DatasetManagerComponent}
     ];
   }
   getApplicationTitle(): string {

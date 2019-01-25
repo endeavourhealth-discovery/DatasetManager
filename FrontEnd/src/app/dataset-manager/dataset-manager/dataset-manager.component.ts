@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageBoxDialog} from 'eds-angular4';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {SettingsService} from './settings.service';
+import {DatasetManagerService} from './dataset-manager.service';
 
 @Component({
   selector: 'app-record-viewer',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  templateUrl: './dataset-manager.component.html',
+  styleUrls: ['./dataset-manager.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class DatasetManagerComponent implements OnInit {
 
   tableData: any[] = [
     {id: 1, name: 'John Smith', description: 'Senior consultant'},
@@ -21,7 +21,7 @@ export class SettingsComponent implements OnInit {
   message: string;
 
   constructor(private modal: NgbModal,
-              private service: SettingsService) { }
+              private service: DatasetManagerService) { }
 
   ngOnInit() {
     this.service.getMessage('Fred')
