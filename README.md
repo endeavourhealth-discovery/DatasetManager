@@ -15,7 +15,7 @@ Contains all the Java DB entities for the tables in the models folder and Persis
 Contains all the endpoints for the API.
 
 #### logic
-Contains the business logic for the application. This is where most of the code is held and should be unit tested
+Contains the business logic for the application. This is where most of the code is held and should be unit tested.
 
 #### framework
 Contains standard exception classes and swagger bootstrap code. This is also where the Metrics are initialised on loading.
@@ -27,8 +27,12 @@ JSON representations of the DB entities to allow communication between frontend 
 Contains the standard implementations for the metrics code.
 
 #### Running API
-create a run configuration in intelliJ using Tomcat -> Local.  
-In deployment tab, click + choose Artifact and select API:war exploded
+Create a run configuration in IntelliJ using Tomcat -> Local.
+  
+In the deployment tab, click + choose Artifact and select API:war exploded.
+
+Change the application context field to /
+
 In the startup tab, click on debug and add these options into the environment variables. 
 
 CONFIG_JDBC_CLASS=com.mysql.jdbc.Driver
@@ -43,7 +47,7 @@ This is using Angular CLI so use this for creating any new components.  https://
 
 service.ts files are used to communicate with the API.
 
-#### Running Frontend.  
+#### Running Frontend 
 Create a run configuration in IntelliJ using npm
 in the script input type start
 Click run and it should start running on [http://localhost:4200](http://localhost:4200/)
