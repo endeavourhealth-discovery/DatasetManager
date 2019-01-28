@@ -3,6 +3,6 @@ import {Codesets} from "./Codesets";
 
 export class File {
   type: string;
-  fields: Array<Fields>;
-  codesets: Array<Codesets>;
+  fields: Fields[];
+  codesets: Codesets[];
 }
