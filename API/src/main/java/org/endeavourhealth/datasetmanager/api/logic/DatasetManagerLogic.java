@@ -1,16 +1,25 @@
 package org.endeavourhealth.datasetmanager.api.logic;
 
+import org.endeavourhealth.common.config.ConfigManagerException;
 import org.endeavourhealth.datasetmanager.api.dal.DatasetManagerDAL;
 import org.endeavourhealth.datasetmanager.api.dal.DatasetManagerDAL_JDBC;
+import org.endeavourhealth.scheduler.models.database.DataSetEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class DatasetManagerLogic {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DatasetManagerLogic.class);
+
     private DatasetManagerDAL dal;
 
     public DatasetManagerLogic() {
         try {
             this.dal = new DatasetManagerDAL_JDBC();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
     }
 
@@ -18,7 +27,7 @@ public class DatasetManagerLogic {
         this.dal = dal;
     }
 
-    public String getMessage(String name) {
-        return dal.getGreeting() + " " + name;
+    public List<DataSetEntity> getAllDatasets() throws Exception {
+        return DataSetEntity.getAllDatasets();
     }
 }

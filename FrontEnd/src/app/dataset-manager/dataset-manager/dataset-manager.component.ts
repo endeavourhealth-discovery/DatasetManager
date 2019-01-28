@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {MessageBoxDialog} from 'eds-angular4';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import {LoggerService, MessageBoxDialog} from 'eds-angular4';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DatasetManagerService} from './dataset-manager.service';
+import {ToastsManager} from 'ng2-toastr';
+import {Dataset} from "./models/Dataset";
 
 @Component({
   selector: 'app-record-viewer',
@@ -10,25 +12,31 @@ import {DatasetManagerService} from './dataset-manager.service';
 })
 export class DatasetManagerComponent implements OnInit {
 
-  tableData: any[] = [
-    {id: 1, name: 'John Smith', description: 'Senior consultant'},
-    {id: 2, name: 'Jane Doe', description: 'General practitioner'},
-    {id: 3, name: 'Dave Jones', description: 'Hospital porter'},
-    {id: 4, name: 'Doris Jackson', description: 'Surgery receptionist'}
-  ];
-
-  selection: any = this.tableData[2];
   message: string;
+  datasets: Dataset[];
+  selection: Dataset;
 
   constructor(private modal: NgbModal,
-              private service: DatasetManagerService) { }
+              private log: LoggerService,
+              private service: DatasetManagerService,
+              public toastr: ToastsManager, vcr: ViewContainerRef){
+
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
-    this.service.getMessage('Fred')
+    this.service.getList()
       .subscribe(
-        (result) => this.message = result,
-        (error) => console.error(error)
-      )
+        result => {
+          this.datasets = result;
+          let val: any;
+          for (let i = 0; i < this.datasets.length; i++) {
+            val = this.datasets[i].definition;
+            this.datasets[i].definition = JSON.parse(val);
+            this.selection = this.datasets[0];
+          }
+        }
+      );
   }
 
   showDialog() {
