@@ -52,7 +52,7 @@
                         <tr class="d-flex">
                           <th class="col-3">Dataset ID</th>
                           <!-- <th class="col-4">Name</th> -->
-                          <th class="col-11">Definition</th>
+                          <th class="col-6">Name</th>
                           <th class="col-1"></th>
                         </tr>
                       </thead>
@@ -60,7 +60,7 @@
                         <tr class="d-flex show-child-on-hover" *ngFor="let item of datasets" (click)="selection = item" [class.selection]="selection == item">
                           <td class="col-3">{{item.datasetId}}</td>
                           <!-- <td class="col-4">{{item.name}}</td> -->
-                          <td class="col-11">{{item.definition}}</td>
+                          <td class="col-6">{{item.definition.name}}</td>
                           <td class="col-1">
                             <div class="pull-right child-to-show">
                               <button type="button" class="btn btn-xs btn-success"><em class="fa fa-pencil"></em></button>

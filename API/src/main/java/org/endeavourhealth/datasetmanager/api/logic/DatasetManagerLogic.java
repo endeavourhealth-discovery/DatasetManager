@@ -1,6 +1,4 @@
 package org.endeavourhealth.datasetmanager.api.logic;
-
-import org.endeavourhealth.common.config.ConfigManagerException;
 import org.endeavourhealth.datasetmanager.api.dal.DatasetManagerDAL;
 import org.endeavourhealth.datasetmanager.api.dal.DatasetManagerDAL_JDBC;
 import org.endeavourhealth.scheduler.models.database.DataSetEntity;

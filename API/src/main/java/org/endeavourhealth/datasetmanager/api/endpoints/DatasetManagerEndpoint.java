@@ -28,7 +28,7 @@ public class DatasetManagerEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.Message.Get") // TODO: metrics name <application>.<endpoint>.<path>.<method>
     @Path("/message")
-    @ApiOperation(value = "Returns a list of all concepts") // TODO: operation description
+    @ApiOperation(value = "Returns a message") // TODO: operation description
     public Response get(@Context SecurityContext sc,
                         @ApiParam(value = "Mandatory name") @QueryParam("name") String name
     ) {
