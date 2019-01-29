@@ -21,11 +21,12 @@ public class DatasetManagerLogic {
         }
     }
 
-    public DatasetManagerLogic(DatasetManagerDAL dal) {
-        this.dal = dal;
-    }
-
     public List<DataSetEntity> getAllDatasets() throws Exception {
         return DataSetEntity.getAllDatasets();
     }
+
+    public void deleteDataset(String id) throws Exception  {
+        DataSetEntity.deleteDataset(Integer.valueOf(id));
+    }
+
 }

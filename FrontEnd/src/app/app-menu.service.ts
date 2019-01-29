@@ -13,7 +13,7 @@ export class AppMenuService implements  AbstractMenuProvider {
     ];
   }
   getApplicationTitle(): string {
-    return 'Dataset Manager tool';             // TODO: Tool title
+    return 'Dataset Manager';             // TODO: Tool title
   }
 
   getClientId(): string {

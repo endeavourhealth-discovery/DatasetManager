@@ -16,9 +16,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.util.List;
 
-@Path("/datasetManager") // TODO: endpoint path
-@Metrics(registry = "datasetManagerMetricRegistry") // TODO: metrics registry
-@Api(description = "Api for all calls relating to the Dataset Manager") // TODO: endpoint description
+@Path("/datasetManager")
+@Metrics(registry = "datasetManagerMetricRegistry")
+@Api(description = "Api for all calls relating to the Dataset Manager")
 public class DatasetManagerEndpoint {
 
     private static final Logger LOG = LoggerFactory.getLogger(DatasetManagerEndpoint.class);
@@ -26,9 +26,9 @@ public class DatasetManagerEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.Message.Get") // TODO: metrics name <application>.<endpoint>.<path>.<method>
+    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.Message.Get")
     @Path("/message")
-    @ApiOperation(value = "Returns a message") // TODO: operation description
+    @ApiOperation(value = "Returns a message")
     public Response get(@Context SecurityContext sc,
                         @ApiParam(value = "Mandatory name") @QueryParam("name") String name
     ) {
@@ -48,7 +48,7 @@ public class DatasetManagerEndpoint {
     @ApiOperation(value = "Returns a list of all datasets") // operation description
     public Response list(@Context SecurityContext sc) throws Exception {
 
-        LOG.debug("List All Datasets Called");
+        LOG.debug("List all datasets called");
 
         List<DataSetEntity> result = new DatasetManagerLogic().getAllDatasets();
 
@@ -56,4 +56,25 @@ public class DatasetManagerEndpoint {
                 .ok(result)
                 .build();
     }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.Delete")
+    @Path("/")
+    @ApiOperation(value = "Delete a dataset based on the Id that is passed to the API. Deletion is PERMANENT!")
+
+    public Response deleteDataset(@Context SecurityContext sc,
+                                  @ApiParam(value = "Id of the dataset to be deleted")
+                                  @QueryParam("id") String id) throws Exception {
+
+        LOG.debug("Delete dataset called");
+
+        new DatasetManagerLogic().deleteDataset(id);
+
+        return Response
+                .ok()
+                .build();
+    }
+
 }
