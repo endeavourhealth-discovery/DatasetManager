@@ -29,8 +29,6 @@
         <servlet.version>3.1.0</servlet.version>
 
         <maven-sonar-plugin.version>3.5.0.1254</maven-sonar-plugin.version>
-
-        <!-- TODO change SkeletonAPIandUI to your repo name -->
         <sonar.projectKey>endeavourhealth-discovery_DatasetManager</sonar.projectKey>
         <sonar.organization>endeavourhealth-discovery</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>

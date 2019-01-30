@@ -7,6 +7,8 @@ import io.swagger.models.Swagger;
 import io.swagger.models.auth.OAuth2Definition;
 import org.endeavourhealth.coreui.framework.config.ConfigService;
 import org.endeavourhealth.datasetmanager.api.metrics.DatasetManagerInstrumentedFilterContextListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,13 +16,16 @@ import javax.servlet.http.HttpServlet;
 import java.lang.management.ManagementFactory;
 
 public class SwaggerBootstrap extends HttpServlet {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SwaggerBootstrap.class);
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         Info info = new Info()
-                .title("Dataset Manager API")                                       // TODO: Swagger title
-                .description("Documentation for the Dataset Manager api ");          // TODO: Swagger description
+                .title("Dataset Manager API")
+                .description("Documentation for the Dataset Manager API ");
 
-        System.out.println("API is running!!!");
+        LOG.info("API is running :O)");
 
         String baseAuthUrl = ConfigService.instance().getAuthConfig().getAuthServerUrl() +
                 "/realms/" + ConfigService.instance().getAuthConfig().getRealm() + "/protocol/openid-connect";

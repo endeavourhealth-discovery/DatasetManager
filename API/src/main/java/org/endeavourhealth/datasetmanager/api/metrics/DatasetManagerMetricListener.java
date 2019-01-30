@@ -5,10 +5,10 @@ import com.codahale.metrics.servlets.MetricsServlet;
 
 // TODO: Metrics listener
 public class DatasetManagerMetricListener extends MetricsServlet.ContextListener {
-    public static final MetricRegistry templateMetricRegistry = DatasetManagerInstrumentedFilterContextListener.REGISTRY;
+    public static final MetricRegistry datasetManagerMetricRegistry = DatasetManagerInstrumentedFilterContextListener.REGISTRY;
 
     @Override
     protected MetricRegistry getMetricRegistry() {
-        return templateMetricRegistry;
+        return datasetManagerMetricRegistry;
     }
 }
