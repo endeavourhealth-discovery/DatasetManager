@@ -1,8 +1,8 @@
-import {Fields} from "./Fields";
-import {Codesets} from "./Codesets";
+import {Field} from "./Field";
+import {CodeSet} from "./CodeSet";
 
 export class File {
   type: string;
-  fields: Fields[];
-  codesets: Codesets[];
+  fields: Field[];
+  codeSets: CodeSet[];
 }

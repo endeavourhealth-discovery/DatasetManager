@@ -1,4 +1,4 @@
-export class Codesets {
+export class CodeSet {
   codeSetId: number;
   extractType: string;
 }

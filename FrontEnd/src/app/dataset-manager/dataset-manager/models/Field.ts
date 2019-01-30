@@ -1,4 +1,4 @@
-export class Fields {
+export class Field {
   header: string;
   index: number;
 }

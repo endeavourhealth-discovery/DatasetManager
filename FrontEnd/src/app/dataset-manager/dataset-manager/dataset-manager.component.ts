@@ -35,6 +35,7 @@ export class DatasetManagerComponent implements OnInit {
             this.datasets[i].definition = JSON.parse(val);
             this.filteredDatasets = this.datasets;
             this.selection = this.filteredDatasets[0];
+            console.log(this.selection);
           }
         },
       );
