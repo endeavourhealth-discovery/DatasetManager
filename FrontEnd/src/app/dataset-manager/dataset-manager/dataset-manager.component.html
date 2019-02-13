@@ -22,7 +22,7 @@
 
                   <!-- Input group (addon) -->
                   <div class="form-group">
-                    <b><label class="form-control-label">Search</label></b>
+                    <strong><label class="form-control-label">Search</label></strong>
                     <div class="input-group">
                       <input class="form-control" type="text" [(ngModel)]="searchTerm" (keyup)="searchDatasets()" name="searchTerm" placeholder="Search by Dataset Id or Name..." #searchBox>
                       <span class="input-group-append" (click)="searchDatasets()">
@@ -115,7 +115,7 @@
                       <tbody>
                       <tr class="d-flex show-child-on-hover" *ngFor="let file of selection.definition.extract">
                         <td class="col-1"></td>
-                        <td class="col-10" ><b>{{file.type | uppercase}} FILE</b>
+                        <td class="col-10" ><strong>{{file.type | uppercase}} FILE</strong>
                           <table class="table table-striped table-sm">
                             <thead>
                             <tr class="d-flex">
@@ -149,7 +149,6 @@
                     </table>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>

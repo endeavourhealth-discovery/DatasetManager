@@ -20,7 +20,7 @@ export class DatasetManagerComponent implements OnInit {
   constructor(private modal: NgbModal,
               private log: LoggerService,
               private service: DatasetManagerService,
-              public toastr: ToastsManager, vcr: ViewContainerRef){
+              public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -35,7 +35,7 @@ export class DatasetManagerComponent implements OnInit {
             this.datasets[i].definition = JSON.parse(val);
             this.filteredDatasets = this.datasets;
             this.selection = this.filteredDatasets[0];
-            console.log(this.selection);
+            // console.log(this.selection);
           }
         },
       );
@@ -56,6 +56,7 @@ export class DatasetManagerComponent implements OnInit {
           const index = this.datasets.indexOf(item);
           this.datasets.splice(index, 1);
           this.log.success('Dataset deleted successfully', item, 'Delete dataset confirmation');
+          this.selection = this.datasets[0];
         },
         (error) => this.log.error('The dataset could not be deleted', error, 'Delete dataset error')
       );
@@ -65,7 +66,8 @@ export class DatasetManagerComponent implements OnInit {
     this.filteredDatasets = this.datasets;
     this.filteredDatasets = this.filteredDatasets.filter(
       dataset => dataset.definition.name.toUpperCase().includes(this.searchTerm.toUpperCase())
-    );
+        || dataset.datasetId.toString().startsWith(this.searchTerm));
+      this.selection = this.filteredDatasets[0];
   }
 
   clearSearch() {
