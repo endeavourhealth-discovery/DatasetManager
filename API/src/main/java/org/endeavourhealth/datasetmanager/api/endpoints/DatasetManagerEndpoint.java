@@ -4,8 +4,11 @@ import io.astefanutti.metrics.aspectj.Metrics;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.endeavourhealth.common.security.annotations.RequiresAdmin;
+import org.endeavourhealth.datasetmanager.api.json.JsonDatasetConfig;
 import org.endeavourhealth.datasetmanager.api.logic.DatasetManagerLogic;
 import org.endeavourhealth.scheduler.models.database.DataSetEntity;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,8 +33,8 @@ public class DatasetManagerEndpoint {
     @Path("/message")
     @ApiOperation(value = "Returns a message")
     public Response get(@Context SecurityContext sc,
-                        @ApiParam(value = "Mandatory name") @QueryParam("name") String name
-    ) {
+                        @ApiParam(value = "Mandatory name")
+                        @QueryParam("name") String name) {
 
         String result = "Hello!"; // new DatasetManagerLogic().getMessage(name);
 
@@ -74,6 +77,33 @@ public class DatasetManagerEndpoint {
 
         return Response
                 .ok()
+                .build();
+    }
+
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.save")
+    @Path("/dataset/save")
+    @RequiresAdmin
+    @ApiOperation(value = "Saves a dataset or updates an existing dataset")
+    public Response saveDataset(@Context SecurityContext sc, JsonDatasetConfig jsonDatasetConfig,
+                                @ApiParam(value = "edit mode") @QueryParam("editMode") String editMode) throws Exception {
+
+        LOG.debug("Save dataset called");
+
+        boolean isEdit = editMode.equals("1");
+        JSONObject definition = new JSONObject(jsonDatasetConfig.getExtract());
+        DataSetEntity dataset = new DataSetEntity();
+        dataset.setDatasetId(jsonDatasetConfig.getId());
+        dataset.setDefinition(definition.toString());
+
+        dataset = new DatasetManagerLogic().saveDataset(dataset, isEdit);
+
+        return Response
+                .ok()
+                .entity(jsonDatasetConfig)
                 .build();
     }
 

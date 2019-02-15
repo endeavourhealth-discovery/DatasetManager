@@ -14,7 +14,6 @@
     <artifactId>FrontEnd</artifactId>
 
     <properties>
-      <!-- TODO change SkeletonAPIandUI to your repo name -->
       <sonar.projectKey>endeavourhealth-discovery_DatasetManager::FrontEnd</sonar.projectKey>
       <sonar.sources>src</sonar.sources>
       <sonar.typescript.tsconfigPath>tsconfig.json</sonar.typescript.tsconfigPath>

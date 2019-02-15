@@ -29,4 +29,13 @@ public class DatasetManagerLogic {
         DataSetEntity.deleteDataset(Integer.valueOf(id));
     }
 
+    public DataSetEntity saveDataset(DataSetEntity dataset, boolean isEdit) throws Exception {
+
+        if (isEdit) {
+            DataSetEntity.updateDataset(dataset);
+        } else {
+            DataSetEntity.createDataset(dataset);
+        }
+        return dataset;
+    }
 }
