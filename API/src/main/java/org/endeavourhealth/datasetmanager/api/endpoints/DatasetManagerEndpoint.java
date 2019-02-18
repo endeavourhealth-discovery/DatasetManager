@@ -100,6 +100,7 @@ public class DatasetManagerEndpoint {
         dataset.setDefinition(definition.toString());
 
         dataset = new DatasetManagerLogic().saveDataset(dataset, isEdit);
+        jsonDatasetConfig.setId(dataset.getDatasetId());
 
         return Response
                 .ok()
