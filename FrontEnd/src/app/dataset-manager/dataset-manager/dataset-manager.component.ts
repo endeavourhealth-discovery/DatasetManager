@@ -3,6 +3,8 @@ import {LoggerService, MessageBoxDialog} from 'eds-angular4';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DatasetManagerService} from './dataset-manager.service';
 import {ToastsManager} from 'ng2-toastr';
+import {ModuleStateService} from 'eds-angular4/dist/common';
+import {Router} from '@angular/router';
 import {Dataset} from "./models/Dataset";
 
 @Component({
@@ -20,6 +22,8 @@ export class DatasetManagerComponent implements OnInit {
   constructor(private modal: NgbModal,
               private log: LoggerService,
               private service: DatasetManagerService,
+              private state: ModuleStateService,
+              private router: Router,
               public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -41,8 +45,19 @@ export class DatasetManagerComponent implements OnInit {
       );
   }
 
+  add() {
+    this.state.setState('datasetEditor', {extract: null, editMode: false});
+    this.router.navigate(['datasetEditor']);
+  }
+
+  edit(item: Dataset) {
+    this.service.setSelectedDataset(item);
+    this.state.setState('datasetEditor', {extract: item, editMode: true});
+    this.router.navigate(['datasetEditor']);
+  }
+
   delete(item: Dataset) {
-    MessageBoxDialog.open(this.modal, 'Delete dataset check', 'Are you sure that you want to delete the dataset named <b>' + item.definition.name + '</b>?', 'Delete dataset', 'Cancel')
+    MessageBoxDialog.open(this.modal, 'Delete dataset check', 'Are you sure that you want to delete the dataset named <strong>' + item.definition.name + '</strong>?', 'Delete dataset', 'Cancel')
       .result.then(
       () => this.doDelete(item),
       () => this.log.info('Delete dataset cancelled')
