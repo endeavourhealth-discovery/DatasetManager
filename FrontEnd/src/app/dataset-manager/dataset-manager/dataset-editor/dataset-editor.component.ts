@@ -8,9 +8,6 @@ import {ModuleStateService} from 'eds-angular4/dist/common';
 import {DatasetManagerService} from '../dataset-manager.service';
 import {Dataset} from '../models/Dataset';
 import {Definition} from '../models/Definition';
-import {File} from '../models/File';
-import {Field} from '../models/Field'
-import {CodeSet} from '../models/CodeSet';
 
 @Component({
   selector: 'app-dataset-editor',
@@ -55,7 +52,7 @@ export class DatasetEditorComponent implements OnInit {
       return;
     }
 
-    this.selection = Object.assign([], screen.dataset)
+    this.selection = Object.assign([], screen.extract);
     this.editMode = screen.editMode;
     this.existing = screen.existing;
     this.selfEdit = screen.selfEdit;
@@ -63,15 +60,7 @@ export class DatasetEditorComponent implements OnInit {
     if (!this.editMode) {
       this.dialogTitle = 'Add Dataset';
 
-      const codeSets = new Array<CodeSet>();
-      const fields = new Array<Field>();
-      const files = new File[5];
       const definition = new Definition();
-
-      definition.extract = files;
-      // definition.extract.push(files);
-      // definition.extract.codeSets = codeSets;
-      // extract.fields = fields;
 
       this.selection = {
         datasetId: 0,
@@ -85,6 +74,7 @@ export class DatasetEditorComponent implements OnInit {
         datasetId: this.selection.datasetId,
         definition: this.selection.definition,
       } as Dataset;
+
     }
   }
 
