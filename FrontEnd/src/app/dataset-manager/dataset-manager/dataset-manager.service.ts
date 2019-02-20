@@ -32,7 +32,7 @@ export class DatasetManagerService {
 
   saveDataset(dataset: Dataset, editMode: boolean): Observable<Dataset> {
     this.setSelectedDataset(dataset);
-    const params = new URLSearchParams();
+    let params = new URLSearchParams();
     params.set('editMode', editMode ? '1' : '0');
     return this.http.post('api/datasetManager/dataset/save', dataset, {search: params})
       .map((response) => response.json());

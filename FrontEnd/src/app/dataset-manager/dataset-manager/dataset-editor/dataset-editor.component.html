@@ -1,3 +1,36 @@
-<p>
-  dataset-editor works!
-</p>
+<div class="module">
+  <div class="container-fluid">
+    <div class="module-heading">{{dialogTitle}}
+      <div class="pull-right">
+        <button type="button" class="btn btn-success" (click)="save(false);">Save</button>
+        <button type="button" class="btn btn-warning" (click)="save(true);">Save & close</button>
+        <button type="button" class="btn btn-danger" (click)="close(true)">Close</button>
+      </div>
+    </div>
+    <div class="module-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <form DatasetDetails="form" class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label required-field">Dataset Id</label>
+                      <input type="text" class="form-control" placeholder="Dataset Id"
+                             [(ngModel)]="selection.datasetId" name="datasetId" #datasetId>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label required-field">Dataset Name</label>
+                      <input type="text" class="form-control" placeholder="Dataset Name"
+                             [(ngModel)]="selection.definition.name" name="definition.name"
+                             #definition.name>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

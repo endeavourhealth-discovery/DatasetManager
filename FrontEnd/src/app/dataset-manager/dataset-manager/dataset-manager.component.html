@@ -14,12 +14,12 @@
               <div class="pull-right">
                 <button type="button" class="btn btn-success" (click)="add()">Add</button>
               </div>
-
             </div>
+
             <div class="card-body">
+
               <div class="row">
                 <div class="col-md-12">
-
                   <!-- Input group (addon) -->
                   <div class="form-group">
                     <strong><label class="form-control-label">Search</label></strong>
@@ -34,8 +34,8 @@
                          </span>
                     </div>
                   </div>
-
                 </div>
+
                 <form Datasets="form" class="container-fluid">
                   <div class="row">
                     <div class="col-md-12">
@@ -67,7 +67,9 @@
                   </div>
                 </form>
               </div>
+
             </div>
+
           </div>
         </div>
 
@@ -111,7 +113,9 @@
                     </div>
                   </div>
                 </div>
-                <td class="col-1"><div class="row"><br></div></td>
+                <td class="col-1">
+                  <div class="row"><br></div>
+                </td>
                 <div class="col-md-12">
                   <div class="scroll-box-450">
                     <!-- Table -->
@@ -144,8 +148,9 @@
                                   </thead>
                                   <tbody>
                                   <tr class="d-flex show-child-on-hover" *ngFor="let field of file.fields">
-                                    <td class="col-8">{{field.header}}</td>
                                     <td class="col-1"></td>
+                                    <td class="col-8">{{field.header}}</td>
+
                                     <td class="col-3">{{field.index}}</td>
                                   </tr>
                                   </tbody>
@@ -171,8 +176,8 @@
                                   <tbody>
                                   <tr class="d-flex show-child-on-hover" *ngFor="let codeSet of file.codeSets">
                                     <td class="col-2"></td>
-                                    <td class="col-6">{{codeSet.codeSetId}}</td>
-                                    <td class="col-4">{{codeSet.extractType}}</td>
+                                    <td class="col-7">{{codeSet.codeSetId}}</td>
+                                    <td class="col-3">{{codeSet.extractType}}</td>
                                   </tr>
                                   </tbody>
                                 </table>

@@ -59,19 +59,18 @@ export class DatasetEditorComponent implements OnInit {
     this.editMode = screen.editMode;
     this.existing = screen.existing;
     this.selfEdit = screen.selfEdit;
-    var var1 = true;
 
     if (!this.editMode) {
       this.dialogTitle = 'Add Dataset';
 
+      const codeSets = new Array<CodeSet>();
+      const fields = new Array<Field>();
+      const files = new File[5];
       const definition = new Definition();
-      const extract = new File();
-      const fields = new Field();
-      const codeSet = new CodeSet();
 
-      // definition.fileLocationDetails = fileLocationDetails;
-      // definition.extract = extract;
-      // extract.codeSets = codeSet;
+      definition.extract = files;
+      // definition.extract.push(files);
+      // definition.extract.codeSets = codeSets;
       // extract.fields = fields;
 
       this.selection = {
