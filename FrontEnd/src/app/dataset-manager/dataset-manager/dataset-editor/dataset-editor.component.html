@@ -22,11 +22,20 @@
                              #definition.name>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-2">
                     <div *ngIf="isEditMode()" class="form-group">
-                      <label class="control-label required-field">Dataset Id</label>
+                      <label class="control-label">Dataset Id</label>
                       <input type="text" *ngIf="isEditMode()" disabled class="form-control" placeholder="Dataset Id"
                              [(ngModel)]="selection.datasetId" name="datasetId" #datasetId>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                  </div>
+                  <div>
+                    <div class="col-md-3">
+                      <label class="control-label"></label>
+                    <span class="table-add-dataset-file">
+                            <button type="button" class="btn btn-success">Add Dataset File</button></span>
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -42,7 +51,9 @@
                       <tr class="d-flex show-child-on-hover" *ngFor="let file of selection.definition.extract">
                         <td class="col-1"></td>
                         <td class="col-10"><strong>{{file.type | uppercase}} FILE</strong>
-                          <ngb-accordion>
+                          <span class="table-delete">
+                            <button type="button" class="btn btn-danger">Delete File</button></span>
+                            <ngb-accordion>
                             <ngb-panel id="fields">
                               <ng-template ngbPanelTitle>
                                 <div class="row">
@@ -57,7 +68,7 @@
                                     <th class="col-6">Field Header</th>
                                     <th class="col-3">Field Index</th>
                                     <th>
-                                      <span class="table-add">
+                                      <span class="table-insert-field">
                                         <button type="button" class="btn btn-success">Insert Field</button></span>
                                     </th>
                                   </thead>
@@ -67,7 +78,7 @@
                                     <td class="col-6" contenteditable="true">{{field.header}}</td>
                                     <td class="col-3">{{field.index}}</td>
                                     <td>
-                                      <span class="table-remove">
+                                      <span class="table-remove-field">
                                         <button type="button" class="btn btn-warning">Delete Field<br></button></span>
                                     </td>
                                   </tr>
@@ -91,7 +102,7 @@
                                     <th class="col-6">Code Set Id</th>
                                     <th class="col-3">Code Set Extract Type</th>
                                     <th>
-                                      <span class="table-add">
+                                      <span class="table-add-code-set">
                                         <button type="button" class="btn btn-success">Insert Code Set</button></span>
                                     </th>
                                   </thead>
@@ -102,8 +113,9 @@
                                     <td class="col-6" contenteditable="true">{{codeSet.codeSetId}}</td>
                                     <td class="col-3" contenteditable="true">{{codeSet.extractType}}</td>
                                     <td>
-                                      <span class="table-remove">
-                                        <button type="button" class="btn btn-warning">Delete Code Set<br></button></span>
+                                      <span class="table-remove-code-set">
+                                        <button type="button"
+                                                class="btn btn-warning">Delete Code Set<br></button></span>
                                     </td>
                                   </tr>
                                   </tbody>

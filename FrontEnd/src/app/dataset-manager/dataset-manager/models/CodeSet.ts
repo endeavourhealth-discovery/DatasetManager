@@ -1,9 +1,11 @@
+import {CodeSetExtractType} from "./CodeSetExtractType";
+
 export class CodeSet {
   codeSetId: number;
-  extractType: string;
+  extractType: CodeSetExtractType;
 
   constructor() {
     this.codeSetId = 0;
-    this.extractType = '';
+    this.extractType = CodeSetExtractType.ALL;
   }
 }

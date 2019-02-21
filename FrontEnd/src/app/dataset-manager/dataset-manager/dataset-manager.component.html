@@ -12,7 +12,7 @@
 
               <!-- "Pulled" button group -->
               <div class="pull-right">
-                <button type="button" class="btn btn-success" (click)="add()">Add</button>
+                <button type="button" class="btn btn-success" (click)="add()">Add Dataset</button>
               </div>
             </div>
 
@@ -77,18 +77,18 @@
                       <div class="card">
                         <form DatasetDetails="form" class="container-fluid">
                           <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="control-label">Dataset Id</label>
-                                <input type="text" disabled class="form-control" placeholder="Dataset Id"
-                                       [(ngModel)]="selection.datasetId" name="datasetId" #datasetId>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                               <div class="form-group">
                                 <label class="control-label">Dataset Name</label>
                                 <input type="text" disabled class="form-control" placeholder="Dataset Name"
                                        [(ngModel)]="selection.definition.name" name="definition.name" #definition.name>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <label class="control-label">Dataset Id</label>
+                                <input type="text" disabled class="form-control" placeholder="Dataset Id"
+                                       [(ngModel)]="selection.datasetId" name="datasetId" #datasetId>
                               </div>
                             </div>
                           </div>
