@@ -22,6 +22,8 @@ export class DatasetEditorComponent implements OnInit {
   @Input() selfEdit: boolean;
   dialogTitle: string;
 
+  // TODO: Need to rework the below for Arrays etc.
+
   @ViewChild('datasetId') datasetIdBox;
 
   @ViewChild('definition.name') nameBox;
@@ -84,7 +86,8 @@ export class DatasetEditorComponent implements OnInit {
 
   save(close: boolean) {
     const const1 = true;
-    if (const1 == true) { // this.validateFormInput()
+    if (const1 == true) { // this.validateFormInput() // TODO: this validation - will be short as most of it
+                                                      // will be done already by the use of enums and dropdowns!
       this.datasetManagerService.saveDataset(this.selection, this.editMode)
         .subscribe(
           (response) => {
