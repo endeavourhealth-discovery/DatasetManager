@@ -1,6 +1,6 @@
 import {CodeSetExtractType} from "./CodeSetExtractType";
 
-export class CodeSet {
+export class DatasetCodeSet {
   codeSetId: number;
   extractType: CodeSetExtractType;
 

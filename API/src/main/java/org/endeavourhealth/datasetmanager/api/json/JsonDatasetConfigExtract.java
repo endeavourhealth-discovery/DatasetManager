@@ -7,7 +7,6 @@ public class JsonDatasetConfigExtract {
     private String type = null;
     private List<JsonDatasetFields> fields;
     private List<JsonDatasetCodeSet> codeSets;
-    private List<JsonDatasetParameter> parameters;
 
     public String getType() {
         return type;
@@ -23,14 +22,6 @@ public class JsonDatasetConfigExtract {
 
     public void setFields(List<JsonDatasetFields> fields) {
         this.fields = fields;
-    }
-
-    public List<JsonDatasetParameter> getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(List<JsonDatasetParameter> parameters) {
-        this.parameters = parameters;
     }
 
     public List<JsonDatasetCodeSet> getCodeSets() {

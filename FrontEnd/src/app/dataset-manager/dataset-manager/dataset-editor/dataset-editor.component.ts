@@ -7,7 +7,7 @@ import {LoggerService, MessageBoxDialog} from 'eds-angular4';
 import {ModuleStateService} from 'eds-angular4/dist/common';
 import {DatasetManagerService} from '../dataset-manager.service';
 import {Dataset} from '../models/Dataset';
-import {Definition} from '../models/Definition';
+import {DatasetConfig} from '../models/DatasetConfig';
 
 @Component({
   selector: 'app-dataset-editor',
@@ -60,7 +60,7 @@ export class DatasetEditorComponent implements OnInit {
     if (!this.editMode) {
       this.dialogTitle = 'Add Dataset';
 
-      const definition = new Definition();
+      const definition = new DatasetConfig();
 
       this.selection = {
         datasetId: 0,

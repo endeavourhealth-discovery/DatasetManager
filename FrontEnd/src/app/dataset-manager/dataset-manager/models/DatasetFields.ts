@@ -1,4 +1,4 @@
-export class Field {
+export class DatasetFields {
   header: string;
   index: number;
 

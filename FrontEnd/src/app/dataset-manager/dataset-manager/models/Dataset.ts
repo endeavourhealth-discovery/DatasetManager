@@ -1,11 +1,11 @@
-import {Definition} from "./Definition";
+import {DatasetConfig} from "./DatasetConfig";
 
 export class Dataset {
   datasetId: number;
-  definition: Definition;
+  definition: DatasetConfig;
 
   constructor() {
     this.datasetId = 0;
-    this.definition = new Definition();
+    this.definition = new DatasetConfig();
   }
 }
