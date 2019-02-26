@@ -76,6 +76,7 @@ export class DatasetManagerComponent implements OnInit {
           this.datasets.splice(index, 1);
           this.log.success('Dataset deleted successfully', item, 'Delete dataset confirmation');
           this.selection = this.datasets[0];
+          this.service.setSelectedDataset(this.datasets[0]);
         },
         (error) => this.log.error('The dataset could not be deleted', error, 'Delete dataset error')
       );

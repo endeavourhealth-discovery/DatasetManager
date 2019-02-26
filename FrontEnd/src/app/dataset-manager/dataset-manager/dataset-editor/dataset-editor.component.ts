@@ -22,11 +22,11 @@ export class DatasetEditorComponent implements OnInit {
   @Input() selfEdit: boolean;
   dialogTitle: string;
 
-  // TODO: Need to rework the below for Arrays etc.
+  // TODO: Need to rework the below for Arrays and Tables etc.
 
   @ViewChild('datasetId') datasetIdBox;
 
-  @ViewChild('definition.name') nameBox;
+  @ViewChild('definition.name') datasetNameBox;
   @ViewChild('definition.id') idBox;
   @ViewChild('definition.extract.type') extractTypeBox;
   @ViewChild('definition.extract.fields.header') extractFieldsHeaderBox;
@@ -85,8 +85,7 @@ export class DatasetEditorComponent implements OnInit {
   }
 
   save(close: boolean) {
-    const const1 = true;
-    if (const1 == true) { // this.validateFormInput() // TODO: this validation - will be short as most of it
+    if (this.validateFormInput()) {                   // TODO: from validation - should be short as most of it
                                                       // will be done already by the use of enums and dropdowns!
       this.datasetManagerService.saveDataset(this.selection, this.editMode)
         .subscribe(
@@ -116,5 +115,14 @@ export class DatasetEditorComponent implements OnInit {
     } else {
       this.location.back();
     }
+  }
+
+  validateFormInput() {
+    if (this.selection.definition.name.trim() === '') {
+      this.log.warning('Dataset Name must not be blank');
+      this.datasetNameBox.nativeElement.focus();
+      return false;
+    }
+    return true;
   }
 }

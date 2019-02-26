@@ -1,6 +1,6 @@
 import {DatasetFields} from "./DatasetFields";
 import {DatasetCodeSet} from "./DatasetCodeSet";
-import {ConfigExtractType} from "./ConfigExtractType";
+import {ConfigExtractType} from "./enums/ConfigExtractType";
 
 export class DatasetConfigExtract {
   type: ConfigExtractType;

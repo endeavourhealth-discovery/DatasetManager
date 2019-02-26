@@ -1,4 +1,4 @@
-import {CodeSetExtractType} from "./CodeSetExtractType";
+import {CodeSetExtractType} from "./enums/CodeSetExtractType";
 
 export class DatasetCodeSet {
   codeSetId: number;

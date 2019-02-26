@@ -5,7 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.endeavourhealth.common.security.annotations.RequiresAdmin;
-import org.endeavourhealth.datasetmanager.api.json.JsonDatasetConfig;
+import org.endeavourhealth.datasetmanager.api.json.JsonDataset;
 import org.endeavourhealth.datasetmanager.api.logic.DatasetManagerLogic;
 import org.endeavourhealth.scheduler.models.database.DataSetEntity;
 import org.json.JSONObject;
@@ -84,27 +84,28 @@ public class DatasetManagerEndpoint {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.save")
+    @Timed(absolute = true, name="DatasetManager.DatasetManagerEndpoint.Dataset.Save.Post")
     @Path("/dataset/save")
     @RequiresAdmin
     @ApiOperation(value = "Saves a dataset or updates an existing dataset")
-    public Response saveDataset(@Context SecurityContext sc, JsonDatasetConfig jsonDatasetConfig,
+    public Response saveDataset(@Context SecurityContext sc, JsonDataset jsonDataset,
                                 @ApiParam(value = "edit mode") @QueryParam("editMode") String editMode) throws Exception {
 
         LOG.debug("Save dataset called");
 
         boolean isEdit = editMode.equals("1");
-        JSONObject definition = new JSONObject(jsonDatasetConfig.getExtract());
+        JSONObject definition = new JSONObject(jsonDataset.getDefinition());
+
         DataSetEntity dataset = new DataSetEntity();
-        dataset.setDatasetId(jsonDatasetConfig.getId());
+        dataset.setDatasetId(jsonDataset.getDatasetId());
         dataset.setDefinition(definition.toString());
 
         dataset = new DatasetManagerLogic().saveDataset(dataset, isEdit);
-        jsonDatasetConfig.setId(dataset.getDatasetId());
+        jsonDataset.setDatasetId(dataset.getDatasetId());
 
         return Response
                 .ok()
-                .entity(jsonDatasetConfig)
+                .entity(jsonDataset)
                 .build();
     }
 
