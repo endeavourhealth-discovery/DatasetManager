@@ -46,16 +46,20 @@
                 </td>
 
                 <div class="col-md-12">
+                  <div class="col-md-12>">
+                    <div class="row">
+                    <div class="col-md-3">
+                      <strong>Dataset Id</strong>
+                    </div>
+                    <div class="col-md-8">
+                      <strong>Dataset Name</strong>
+                    </div>
+                    </div>
+                  </div>
+                  <td class="col-1">
+                    <div class="row"><br></div>
+                  </td>
                   <!-- Table -->
-                  <table class="table table-striped table-responsive-sm table-hover">
-                    <thead>
-                    <tr class="d-flex">
-                      <th class="col-3">Dataset Id</th>
-                      <th class="col-8">Dataset Name</th>
-                      <th class="col-1"></th>
-                    </tr>
-                    </thead>
-                  </table>
                   <div class="scroll-box-350">
                     <table class="table table-striped table-responsive-sm table-hover">
                       <tbody>
@@ -119,16 +123,15 @@
                 </td>
 
                 <div class="col-md-12">
+                  <div class="col-md-12">
+                    <strong>Dataset Files</strong>
+                  </div>
+                  <td class="col-1">
+                    <div class="row"><br></div>
+                  </td>
+
                   <!-- Table -->
-                  <table class="table table-striped table-sm">
-                    <thead>
-                    <tr class="d-flex">
-                      <th class="col-11">Dataset Files</th>
-                      <th class="col-1"></th>
-                    </tr>
-                    </thead>
-                  </table>
-                  <div class="scroll-box-400">
+                  <div class="scroll-box-350">
                     <table class="table table-striped table-sm">
                       <tbody>
                       <tr class="d-flex show-child-on-hover" *ngFor="let file of selection.definition.extract">
