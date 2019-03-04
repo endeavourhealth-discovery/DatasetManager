@@ -131,12 +131,14 @@
                                         <td class="col-1"></td>
                                         <td class="col-2">
                                           <input type="text" class="form-control" placeholder="Extract Type"
-                                                 [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}"
+                                                 [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}"
+                                                 name="{{codeSet.extractType}}"
                                                  #extractType>
                                         </td>
                                         <td class="col-2">
                                           <select class="form-control" id="code-set-select"
-                                                  [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}">
+                                                  [(ngModel)]="codeSet.extractType"
+                                                  [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}">
                                             <!-- <option *ngFor="let type of CodeSetExtractType.values()" [ngValue]="type">{{type}}</option> -->
                                             <option>all</option>
                                             <option>earliest</option>
