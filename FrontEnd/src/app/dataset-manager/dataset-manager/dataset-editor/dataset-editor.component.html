@@ -34,7 +34,7 @@
                   <div>
                     <div class="col-md-3">
                       <label class="control-label"></label>
-                    <span class="table-add-dataset-file">
+                      <span class="table-add-dataset-file">
                             <button type="button" class="btn btn-success">Add Dataset File</button></span>
                     </div>
                   </div>
@@ -49,94 +49,120 @@
                     </table>
                     <div class="scroll-box-500">
                       <table class="table table-striped table-sm">
-                      <tbody>
-                      <tr class="d-flex show-child-on-hover" *ngFor="let file of selection.definition.extract">
-                        <td class="col-1"></td>
-                        <td class="col-10"><strong>{{file.type | titlecase}} File</strong>
-                          <span class="table-delete">
+                        <tbody>
+                        <tr class="d-flex show-child-on-hover" *ngFor="let file of selection.definition.extract">
+                          <td class="col-1"></td>
+                          <td class="col-10"><strong>{{file.type | titlecase}} File</strong>
+                            <span class="table-delete">
                             <button type="button" class="btn btn-danger">Delete File</button></span>
                             <ngb-accordion>
-                            <ngb-panel id="fields">
-                              <ng-template ngbPanelTitle>
-                                <div class="row">
-                                  <div class="col-md-3">Fields</div>
-                                </div>
-                              </ng-template>
-                              <ng-template ngbPanelContent>
-                                <table class="table table-striped table-sm">
-                                  <thead>
-                                  <tr class="d-flex">
-                                    <th class="col-1"></th>
-                                    <th class="col-6">Field Header</th>
-                                    <th class="col-3">Field Index</th>
-                                    <th>
-                                      <span class="table-insert-field">
-                                        <button type="button" class="btn btn-success">Insert Field</button></span>
-                                    </th>
-                                  </thead>
-                                </table>
-                                <div class="scroll-box-400">
+                              <ngb-panel id="fields">
+                                <ng-template ngbPanelTitle>
+                                  <div class="row">
+                                    <div class="col-md-3">Fields</div>
+                                  </div>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
                                   <table class="table table-striped table-sm">
-                                  <tbody>
-                                  <tr class="d-flex show-child-on-hover" *ngFor="let field of file.fields">
-                                    <td class="col-1"></td>
-                                    <td class="col-6" contenteditable="true">{{field.header}}</td>
-                                    <td class="col-3">{{field.index}}</td>
-                                    <td>
-                                      <span class="table-remove-field">
-                                        <button type="button" class="btn btn-warning">Delete Field</button></span>
-                                    </td>
-                                  </tr>
-                                  </tbody>
-                                </table>
-                                </div>
-                              </ng-template>
-                            </ngb-panel>
-                          </ngb-accordion>
-                          <ngb-accordion>
-                            <ngb-panel id="codesets" *ngIf="file.type != 'patient'">
-                              <ng-template ngbPanelTitle>
-                                <div class="row">
-                                  <div class="col-md-3">Code Sets</div>
-                                </div>
-                              </ng-template>
-                              <ng-template ngbPanelContent>
-                                <table class="table table-striped table-sm" *ngIf="file.type != 'patient'">
-                                  <thead>
-                                  <tr class="d-flex">
-                                    <th class="col-1"></th>
-                                    <th class="col-6">Code Set Id</th>
-                                    <th class="col-3">Code Set Extract Type</th>
-                                    <th>
-                                      <span class="table-add-code-set">
-                                        <button type="button" class="btn btn-success">Insert Code Set</button></span>
-                                    </th>
-                                  </thead>
-                                </table>
-                                <div class="scroll-box-300">
-                                  <table class="table table-striped table-sm">
-                                  <tbody>
-                                  <tr class="d-flex show-child-on-hover" *ngFor="let codeSet of file.codeSets">
-                                    <td class="col-1"></td>
-                                    <td class="col-6" contenteditable="true">{{codeSet.codeSetId}}</td>
-                                    <td class="col-3" contenteditable="true">{{codeSet.extractType}}</td>
-                                    <td>
-                                      <span class="table-remove-code-set">
-                                        <button type="button"
-                                                class="btn btn-warning">Delete Code Set<br></button></span>
-                                    </td>
-                                  </tr>
-                                  </tbody>
+                                    <thead>
+                                    <tr class="d-flex">
+                                      <th class="col-1"></th>
+                                      <th class="col-10">Field Header</th>
+                                      <th class="col-1">
+                                        <span class="table-add-field">
+                                          <button type="button" class="btn btn-success">Insert</button>
+                                        </span>
+                                      </th>
+                                    </thead>
                                   </table>
-                                </div>
-                              </ng-template>
-                            </ngb-panel>
-                          </ngb-accordion>
-                        </td>
-                        <td class="col-1"></td>
-                      </tr>
-                      </tbody>
-                    </table>
+                                  <div class="scroll-box-400">
+                                    <table class="table table-striped table-sm">
+                                      <tbody>
+                                      <tr class="d-flex show-child-on-hover" *ngFor="let field of file.fields">
+                                        <td class="col-1"></td>
+                                        <td class="col-9">
+                                          <input type="text" class="form-control" placeholder="Field Header"
+                                                 [(ngModel)]="field.header" name="{{field.header}}" #fieldHeader>
+                                        </td>
+                                        <td class="col-1"></td>
+                                        <td>
+                                          <span class="table-remove-field">
+                                            <button type="button" class="btn btn-warning">Delete</button>
+                                          </span>
+                                        </td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </ng-template>
+                              </ngb-panel>
+                            </ngb-accordion>
+                            <ngb-accordion>
+                              <ngb-panel id="codesets" *ngIf="file.type != 'patient'">
+                                <ng-template ngbPanelTitle>
+                                  <div class="row">
+                                    <div class="col-md-3">Code Sets</div>
+                                  </div>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+                                  <table class="table table-striped table-sm" *ngIf="file.type != 'patient'">
+                                    <thead>
+                                    <tr class="d-flex">
+                                      <th class="col-1"></th>
+                                      <th class="col-5">Code Set Id</th>
+                                      <th class="col-5">Code Set Extract Type</th>
+                                      <th class="col-1">
+                                        <span class="table-add-code-set">
+                                          <button type="button" class="btn btn-success">Insert</button>
+                                        </span>
+                                      </th>
+                                    </thead>
+                                  </table>
+                                  <div class="scroll-box-300">
+                                    <table class="table table-striped table-sm">
+                                      <tbody>
+                                      <tr class="d-flex show-child-on-hover" *ngFor="let codeSet of file.codeSets">
+                                        <td class="col-1"></td>
+                                        <td class="col-4">
+                                          <input type="text" class="form-control" placeholder="Code Set"
+                                                 [(ngModel)]="codeSet.codeSetId" name="{{codeSet.codeSetId}}"
+                                                 #codeSetId>
+                                        </td>
+                                        <td class="col-1"></td>
+                                        <td class="col-2">
+                                          <input type="text" class="form-control" placeholder="Extract Type"
+                                                 [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}"
+                                                 #extractType>
+                                        </td>
+                                        <td class="col-2">
+                                          <select class="form-control" id="code-set-select"
+                                                  [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}">
+                                            <!-- <option *ngFor="let type of CodeSetExtractType.values()" [ngValue]="type">{{type}}</option> -->
+                                            <option>all</option>
+                                            <option>earliest</option>
+                                            <option>latest</option>
+                                            <option>earliest_each</option>
+                                            <option>latest_each</option>
+                                          </select>
+                                        </td>
+                                        <td class="col-1"></td>
+                                        <td>
+                                          <span class="table-remove-code-set">
+                                            <button type="button" class="btn btn-warning">Delete</button>
+                                          </span>
+                                        </td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </ng-template>
+                              </ngb-panel>
+                            </ngb-accordion>
+                          </td>
+                          <td class="col-1"></td>
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>

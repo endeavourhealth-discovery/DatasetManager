@@ -8,6 +8,8 @@ import {ModuleStateService} from 'eds-angular4/dist/common';
 import {DatasetManagerService} from '../dataset-manager.service';
 import {Dataset} from '../models/Dataset';
 import {DatasetConfig} from '../models/DatasetConfig';
+import {DatasetFields} from "../models/DatasetFields";
+import {DatasetConfigExtract} from "../models/DatasetConfigExtract";
 
 @Component({
   selector: 'app-dataset-editor',
@@ -125,4 +127,14 @@ export class DatasetEditorComponent implements OnInit {
     }
     return true;
   }
+
+  removeField(datasetConfigExtract: DatasetConfigExtract) {
+    const index = this.selection.definition.extract.indexOf(datasetConfigExtract);
+    this.selection.definition.extract.splice(index, 1);
+  }
+
+  /*removeCodeSet(codeSetCode: CodeSetCodes) {
+    const index = this.selection.codeSetCodes.indexOf(codeSetCode);
+    this.selection.codeSetCodes.splice(index, 1);
+  }*/
 }
