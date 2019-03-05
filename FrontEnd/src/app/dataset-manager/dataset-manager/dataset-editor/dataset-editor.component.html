@@ -80,9 +80,18 @@
                                       <tbody>
                                       <tr class="d-flex show-child-on-hover" *ngFor="let field of file.fields">
                                         <td class="col-1"></td>
-                                        <td class="col-9">
+                                        <td class="col-4">
                                           <input type="text" class="form-control" placeholder="Field Header"
                                                  [(ngModel)]="field.header" name="{{field.header}}" #fieldHeader>
+                                        </td>
+                                        <td class="col-4">
+                                          <select class="form-control" id="patient-field-select"
+                                                  [(ngModel)]="field.header"
+                                                  [ngModelOptions]="{standalone: true}" name="{{field.header}}"
+                                                  *ngIf="file.type == 'patient'">
+                                            <option *ngFor="let fieldHeader of patientFileFieldHeaders"
+                                                    [ngValue]="fieldHeader">{{fieldHeader}}</option>
+                                          </select>
                                         </td>
                                         <td class="col-1"></td>
                                         <td>
@@ -129,22 +138,12 @@
                                                  #codeSetId>
                                         </td>
                                         <td class="col-1"></td>
-                                        <td class="col-2">
-                                          <input type="text" class="form-control" placeholder="Extract Type"
-                                                 [(ngModel)]="codeSet.extractType" [ngModelOptions]="{standalone: true}"
-                                                 name="{{codeSet.extractType}}"
-                                                 #extractType>
-                                        </td>
-                                        <td class="col-2">
+                                        <td class="col-4">
                                           <select class="form-control" id="code-set-select"
                                                   [(ngModel)]="codeSet.extractType"
                                                   [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}">
-                                            <!-- <option *ngFor="let type of CodeSetExtractType.values()" [ngValue]="type">{{type}}</option> -->
-                                            <option>all</option>
-                                            <option>earliest</option>
-                                            <option>latest</option>
-                                            <option>earliest_each</option>
-                                            <option>latest_each</option>
+                                            <option *ngFor="let type of codeSetExtractTypes"
+                                                    [ngValue]="type">{{type}}</option>
                                           </select>
                                         </td>
                                         <td class="col-1"></td>

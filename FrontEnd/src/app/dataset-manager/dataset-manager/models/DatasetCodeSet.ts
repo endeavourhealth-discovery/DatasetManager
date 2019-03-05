@@ -6,6 +6,6 @@ export class DatasetCodeSet {
 
   constructor() {
     this.codeSetId = 0;
-    this.extractType = CodeSetExtractType.ALL;
+    this.extractType = CodeSetExtractType.all;
   }
 }

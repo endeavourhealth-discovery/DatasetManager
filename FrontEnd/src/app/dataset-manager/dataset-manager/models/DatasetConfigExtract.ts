@@ -8,7 +8,7 @@ export class DatasetConfigExtract {
   codeSets: Array<DatasetCodeSet>;
 
   constructor() {
-    this.type = ConfigExtractType.MEDICATION;
+    this.type = ConfigExtractType.medication;
     this.fields = new Array<DatasetFields>();
     this.codeSets = new Array<DatasetCodeSet>();
   }

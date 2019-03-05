@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -8,8 +8,9 @@ import {ModuleStateService} from 'eds-angular4/dist/common';
 import {DatasetManagerService} from '../dataset-manager.service';
 import {Dataset} from '../models/Dataset';
 import {DatasetConfig} from '../models/DatasetConfig';
-import {DatasetFields} from "../models/DatasetFields";
 import {DatasetConfigExtract} from "../models/DatasetConfigExtract";
+import {CodeSetExtractType} from "../models/enums/CodeSetExtractType";
+import {PatientFileFields} from "../models/enums/PatientFileFields";
 
 @Component({
   selector: 'app-dataset-editor',
@@ -23,11 +24,13 @@ export class DatasetEditorComponent implements OnInit {
   @Input() existing: boolean;
   @Input() selfEdit: boolean;
   dialogTitle: string;
+  codeSetExtractTypes;
+  patientFileFieldHeaders;
+
 
   // TODO: Need to rework the below for Arrays and Tables etc.
 
   @ViewChild('datasetId') datasetIdBox;
-
   @ViewChild('definition.name') datasetNameBox;
   @ViewChild('definition.id') idBox;
   @ViewChild('definition.extract.type') extractTypeBox;
@@ -60,6 +63,10 @@ export class DatasetEditorComponent implements OnInit {
     this.editMode = screen.editMode;
     this.existing = screen.existing;
     this.selfEdit = screen.selfEdit;
+    this.codeSetExtractTypes = Object.keys(CodeSetExtractType)
+      .map(cset => CodeSetExtractType[cset as any]);
+    this.patientFileFieldHeaders = Object.keys(PatientFileFields)
+      .map(pffh => PatientFileFields[pffh as any]);
 
     if (!this.editMode) {
       this.dialogTitle = 'Add Dataset';
@@ -88,7 +95,7 @@ export class DatasetEditorComponent implements OnInit {
 
   save(close: boolean) {
     if (this.validateFormInput()) {                   // TODO: from validation - should be short as most of it
-                                                      // will be done already by the use of enums and dropdowns!
+      // will be done already by the use of enums and dropdowns!
       this.datasetManagerService.saveDataset(this.selection, this.editMode)
         .subscribe(
           (response) => {
@@ -97,7 +104,7 @@ export class DatasetEditorComponent implements OnInit {
             if (close) {
               this.close(!close);
             } else {
-              this.log.success('Dataset saved successfully', null, 'Save dataset confirmation' ) // this.dialogTitle
+              this.log.success('Dataset saved successfully', null, 'Save dataset confirmation') // this.dialogTitle
             }
           },
           (error) => this.log.error('The dataset could not be saved', error, 'Save dataset error')
