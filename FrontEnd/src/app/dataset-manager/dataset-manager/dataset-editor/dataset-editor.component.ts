@@ -11,6 +11,10 @@ import {DatasetConfig} from '../models/DatasetConfig';
 import {DatasetConfigExtract} from "../models/DatasetConfigExtract";
 import {CodeSetExtractType} from "../models/enums/CodeSetExtractType";
 import {PatientFileFields} from "../models/enums/PatientFileFields";
+import {ObservationFileFields} from "../models/enums/ObservationFileFields";
+import {AllergyFileFields} from "../models/enums/AllergyFileFields";
+import {ImmunisationFileFields} from "../models/enums/ImmunisationFileFields";
+import {MedicationFileFields} from "../models/enums/MedicationFileFields";
 
 @Component({
   selector: 'app-dataset-editor',
@@ -26,6 +30,10 @@ export class DatasetEditorComponent implements OnInit {
   dialogTitle: string;
   codeSetExtractTypes;
   patientFileFieldHeaders;
+  observationFileFieldHeaders;
+  allergyFileFieldHeaders;
+  immunisationFileFieldHeaders;
+  medicationFileFieldHeaders;
 
 
   // TODO: Need to rework the below for Arrays and Tables etc.
@@ -67,6 +75,14 @@ export class DatasetEditorComponent implements OnInit {
       .map(cset => CodeSetExtractType[cset as any]);
     this.patientFileFieldHeaders = Object.keys(PatientFileFields)
       .map(pffh => PatientFileFields[pffh as any]);
+    this.observationFileFieldHeaders = Object.keys(ObservationFileFields)
+      .map(offh => ObservationFileFields[offh as any]);
+    this.allergyFileFieldHeaders = Object.keys(AllergyFileFields)
+      .map(affh => AllergyFileFields[affh as any]);
+    this.immunisationFileFieldHeaders = Object.keys(ImmunisationFileFields)
+      .map(iffh => ImmunisationFileFields[iffh as any]);
+    this.medicationFileFieldHeaders = Object.keys(MedicationFileFields)
+      .map(mffh => MedicationFileFields[mffh as any]);
 
     if (!this.editMode) {
       this.dialogTitle = 'Add Dataset';
@@ -77,7 +93,6 @@ export class DatasetEditorComponent implements OnInit {
         datasetId: 0,
         definition: definition,
       } as Dataset;
-
     } else {
       this.dialogTitle = 'Edit Dataset';
 
@@ -85,7 +100,6 @@ export class DatasetEditorComponent implements OnInit {
         datasetId: this.selection.datasetId,
         definition: this.selection.definition,
       } as Dataset;
-
     }
   }
 
@@ -94,8 +108,7 @@ export class DatasetEditorComponent implements OnInit {
   }
 
   save(close: boolean) {
-    if (this.validateFormInput()) {                   // TODO: from validation - should be short as most of it
-      // will be done already by the use of enums and dropdowns!
+    if (this.validateFormInput()) {
       this.datasetManagerService.saveDataset(this.selection, this.editMode)
         .subscribe(
           (response) => {

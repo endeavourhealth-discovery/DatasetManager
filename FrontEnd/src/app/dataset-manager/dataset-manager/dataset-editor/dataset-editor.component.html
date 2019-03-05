@@ -85,11 +85,42 @@
                                                  [(ngModel)]="field.header" name="{{field.header}}" #fieldHeader>
                                         </td>
                                         <td class="col-4">
-                                          <select class="form-control" id="patient-field-select"
+                                          <select class="form-control" data-live-search="true" id="patient-field-select"
                                                   [(ngModel)]="field.header"
                                                   [ngModelOptions]="{standalone: true}" name="{{field.header}}"
                                                   *ngIf="file.type == 'patient'">
                                             <option *ngFor="let fieldHeader of patientFileFieldHeaders"
+                                                    [ngValue]="fieldHeader">{{fieldHeader}}</option>
+                                          </select>
+                                          <select class="form-control" data-live-search="true"
+                                                  id="observation-field-select"
+                                                  [(ngModel)]="field.header"
+                                                  [ngModelOptions]="{standalone: true}" name="{{field.header}}"
+                                                  *ngIf="file.type == 'observation'">
+                                            <option *ngFor="let fieldHeader of observationFileFieldHeaders"
+                                                    [ngValue]="fieldHeader">{{fieldHeader}}</option>
+                                          </select>
+                                          <select class="form-control" data-live-search="true" id="allergy-field-select"
+                                                  [(ngModel)]="field.header"
+                                                  [ngModelOptions]="{standalone: true}" name="{{field.header}}"
+                                                  *ngIf="file.type == 'allergy'">
+                                            <option *ngFor="let fieldHeader of allergyFileFieldHeaders"
+                                                    [ngValue]="fieldHeader">{{fieldHeader}}</option>
+                                          </select>
+                                          <select class="form-control" data-live-search="true"
+                                                  id="immunisation-field-select"
+                                                  [(ngModel)]="field.header"
+                                                  [ngModelOptions]="{standalone: true}" name="{{field.header}}"
+                                                  *ngIf="file.type == 'immunisation'">
+                                            <option *ngFor="let fieldHeader of immunisationFileFieldHeaders"
+                                                    [ngValue]="fieldHeader">{{fieldHeader}}</option>
+                                          </select>
+                                          <select class="form-control" data-live-search="true"
+                                                  id="medication-field-select"
+                                                  [(ngModel)]="field.header"
+                                                  [ngModelOptions]="{standalone: true}" name="{{field.header}}"
+                                                  *ngIf="file.type == 'medication'">
+                                            <option *ngFor="let fieldHeader of medicationFileFieldHeaders"
                                                     [ngValue]="fieldHeader">{{fieldHeader}}</option>
                                           </select>
                                         </td>
@@ -139,7 +170,7 @@
                                         </td>
                                         <td class="col-1"></td>
                                         <td class="col-4">
-                                          <select class="form-control" id="code-set-select"
+                                          <select class="form-control" data-live-search="true" id="code-set-select"
                                                   [(ngModel)]="codeSet.extractType"
                                                   [ngModelOptions]="{standalone: true}" name="{{codeSet.extractType}}">
                                             <option *ngFor="let type of codeSetExtractTypes"

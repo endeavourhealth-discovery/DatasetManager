@@ -31,6 +31,9 @@
                                   <input class="form-control" type="text" [(ngModel)]="searchTerm"
                                          (keyup)="searchDatasets()"
                                          name="searchTerm" placeholder="Search by Dataset Id or Name..." #searchBox>
+                                  <span class="input-group-append" (click)="clearSearch()">
+                                  <em class="fa fa-remove input-group-text" title="Clear Search"></em>
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -48,12 +51,12 @@
                 <div class="col-md-12">
                   <div class="col-md-12>">
                     <div class="row">
-                    <div class="col-md-3">
-                      <strong>Dataset Id</strong>
-                    </div>
-                    <div class="col-md-8">
-                      <strong>Dataset Name</strong>
-                    </div>
+                      <div class="col-md-3">
+                        <strong>Dataset Id</strong>
+                      </div>
+                      <div class="col-md-8">
+                        <strong>Dataset Name</strong>
+                      </div>
                     </div>
                   </div>
                   <td class="col-1">
