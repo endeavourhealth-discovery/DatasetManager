@@ -35,9 +35,6 @@ export class DatasetEditorComponent implements OnInit {
   immunisationFileFieldHeaders;
   medicationFileFieldHeaders;
 
-
-  // TODO: Need to rework the below for Arrays and Tables etc.
-
   @ViewChild('datasetId') datasetIdBox;
   @ViewChild('definition.name') datasetNameBox;
   @ViewChild('definition.id') idBox;
@@ -148,9 +145,26 @@ export class DatasetEditorComponent implements OnInit {
     return true;
   }
 
-  removeField(datasetConfigExtract: DatasetConfigExtract) {
+  deleteFile(datasetConfigExtract: DatasetConfigExtract) {
+    MessageBoxDialog.open(this.modal, 'Delete dataset file check',
+      'Are you sure that you want to delete the dataset <strong>' + datasetConfigExtract.type.toString().toUpperCase()
+      + '</strong> file?',
+      'Delete dataset file', 'Cancel')
+      .result.then(
+      () => this.doFileDelete(datasetConfigExtract),
+      () => this.log.info('Delete dataset file cancelled')
+    );
+  }
+
+  doFileDelete(datasetConfigExtract: DatasetConfigExtract){
     const index = this.selection.definition.extract.indexOf(datasetConfigExtract);
     this.selection.definition.extract.splice(index, 1);
+  }
+
+  addFile() {
+    // to be completed and tested
+    let datasetConfigExtract = new DatasetConfigExtract();
+    this.selection.definition.extract.push(datasetConfigExtract);
   }
 
   /*removeCodeSet(codeSetCode: CodeSetCodes) {

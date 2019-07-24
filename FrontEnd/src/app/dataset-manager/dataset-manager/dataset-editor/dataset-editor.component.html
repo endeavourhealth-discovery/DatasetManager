@@ -54,7 +54,7 @@
                           <td class="col-1"></td>
                           <td class="col-10"><strong>{{file.type | titlecase}} File</strong>
                             <span class="table-delete">
-                            <button type="button" class="btn btn-danger">Delete File</button></span>
+                            <button type="button" class="btn btn-danger" (click)="deleteFile(file)">Delete File</button></span>
                             <ngb-accordion>
                               <ngb-panel id="fields">
                                 <ng-template ngbPanelTitle>
@@ -84,6 +84,7 @@
                                           <input type="text" class="form-control" placeholder="Field Header"
                                                  [(ngModel)]="field.header" name="{{field.header}}" #fieldHeader>
                                         </td>
+                                        <td class="col-1"></td>
                                         <td class="col-4">
                                           <select class="form-control" data-live-search="true" id="patient-field-select"
                                                   [(ngModel)]="field.header"
